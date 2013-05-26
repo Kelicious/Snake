@@ -79,6 +79,7 @@
           for (var j = 1; j < 79; ++j) {
             var $cell = $row.find(".cell").eq(j);
             if (this.board.grid[i][j] == "H") {
+              // REV: just use .addClass() here?
               $cell.attr("class","cell snake-head");
             } else if (this.board.grid[i][j] == "B") {
               $cell.attr("class","cell snake-body");

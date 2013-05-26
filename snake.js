@@ -10,6 +10,8 @@ function Snake(length, coords) {
     return this.positions.length;
   };
 
+  // REV: This move function is so simple and nice compared to the nonsense I dreamed up.
+  // Representing the snake as an array of positions is a great idea.
   this.move = function() {
     for (var i = this.length() - 1; i > 0; --i) {
       this.positions[i][0] = this.positions[i - 1][0];
@@ -68,6 +70,7 @@ function Board(size) {
     this.grid[coords[0]][coords[1]] = value;
   };
 }
+// set and getRandomInt look useful
 
 function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -102,6 +105,7 @@ function Game(size, length) {
     if(typeof keepTail == "undefined") {
       keepTail = false;
     }
+    // REV: Why not just set len outside the for loop parentheses?
     for (var i = 0, len = this.snake.length(); i < len; ++i) {
       var symbol = (i == 0) ? "H" : "B";
       this.board.set(this.snake.positions[i], symbol);
@@ -110,6 +114,7 @@ function Game(size, length) {
 
   this.snakeDead = function() {
     var headCoords = this.snake.positions[0];
+    // REV: Again, also much simpler than what I was considering for the death conditions.
     var deadPositions = this.snake.positions.slice(1).concat(this.board.walls);
 
     for (var i = 0, len = deadPositions.length; i < len; ++i) {
